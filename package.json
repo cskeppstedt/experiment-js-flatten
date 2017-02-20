@@ -1,12 +1,15 @@
 {
-  "name": "flatten-es6",
+  "name": "experiment-js-flatten",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "npm run test -- --watchAll"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cskeppstedt/experiment-js-flatten.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "eslint": "^3.15.0",
