@@ -9,8 +9,8 @@ module.exports = function flatten (input) {
 function flattenArray (input) {
   return input.reduce((accumulator, element) => (
     isArray(element)
-      ? [...accumulator, ...flattenArray(element)]
-      : [...accumulator, element]
+      ? accumulator.concat(flattenArray(element))
+      : accumulator.concat(element)
   ), [])
 }
 
