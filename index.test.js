@@ -1,8 +1,8 @@
 const flatten = require('./')
 
 test('throws on invalid input', () => {
-  const invalidInput = [undefined, null, 3, '3', {}, false, true]
-  invalidInput.forEach((input) => {
+  const invalidInputs = [undefined, null, 3, '3', {}, false, true, /3/]
+  invalidInputs.forEach((input) => {
     expect(() => flatten(input)).toThrow(TypeError)
   })
 })
@@ -34,6 +34,18 @@ test('handles single level nesting', () => {
 test('handles multiple level nesting', () => {
   const input = [1, [2, [3, 4]], 5]
   const expected = [1, 2, 3, 4, 5]
+  expect(flatten(input)).toEqual(expected)
+})
+
+test('handles empty arrays within single level nesting', () => {
+  const input = [1, [], 2]
+  const expected = [1, 2]
+  expect(flatten(input)).toEqual(expected)
+})
+
+test('handles empty arrays within multiple level nesting', () => {
+  const input = [1, [2, []], 3]
+  const expected = [1, 2, 3]
   expect(flatten(input)).toEqual(expected)
 })
 
